@@ -7,7 +7,14 @@ namespace CodingChallenge.PirateSpeak
     {
         public string[] GetPossibleWords(string jumble, string[] dictionary)
         {
-            var possibleMatches = dictionary.OfType<string>().ToList(); 
+            if(string.IsNullOrEmpty(jumble) 
+                || dictionary == null 
+                || dictionary.Length == 0)
+            {
+                return new string[0];
+            }
+
+            var possibleMatches = dictionary.ToList(); 
             var jumbleCharacterArray = StringToSortedCharacterArray(jumble);
 
             for (int i = possibleMatches.Count - 1; i >= 0; i--)
